@@ -1,0 +1,136 @@
+Delivered-To: nakamoto.satoshi.b@gmail.com
+Received: by 2002:a05:6520:69e:b0:345:2a7f:b3ee with SMTP id j30csp7109194lka;
+        Tue, 22 Sep 2026 13:09:18 -0700 (PDT)
+X-Received: by 2002:a05:6870:f10a:b0:485:d31b:7768 with SMTP id 586e51a60fabf-4908ab49b57mr755350fac.38.1790107758605;
+        Tue, 22 Sep 2026 13:09:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790107758; cv=none;
+        d=google.com; s=arc-20260327;
+        b=UWJ1RW3k2K4HGK06w9tbkXgpltf+2Hsvxd8I2ilmqKoi7yjvOBg51du8qb2qpYHzXD
+         yrdRgrAiRJBr6nOgF2FXKq93vAxwPWMd7UoZ5ptMryhTEinOZui3JCMkKk2cFGvN9Y3R
+         9r3LkHbhTNphBsToG97aJ7gpmfHqUfGpEvuuOb7sT8zrXXthsT2Qf1WlVhhQ0xjsHXmL
+         Fpm4Lj+GZ+mk1+R0CCrmOnzFQu2hAjI0Dq0dT+LaYCq8ZFaZKjAZUos0axHj0hdZGLBQ
+         rTymyCDhxLONQCmgc0Rg6JaOeoh/Z+0s1vVf/RC8rQp7HSax33nk3/5HjjicU9GfFaWT
+         9MIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=mime-version:message-id:subject:from:to:date:ironport-hdrordr
+         :ironport-data;
+        bh=irArKHxhrNZi4zBC0WJqPpyrehMPLTU8DHUrkmFJvtw=;
+        fh=Rm9neQ3DggiCo5sFJY75sIdvx3uMycmbIk4Ms0bzMrc=;
+        b=gQFgjohmT+j5eq/olxEOhbo4B2j3vs+g4gmS2GQkpE8C40kXcru7fTCE/ZvIkDOd20
+         SwuwFpm66DwwrULaErwgstgauL6DnTFmu34Vw1k3YDcTnGDFzC7M4qDiAJ37J4ifdad4
+         QAY2Nu8/HpOJKhKTJBgJnyViKR4Le8jCiQ9kXpHoua8igLphrM3moqSvZJ/a9vhO2GN7
+         3pir9wN6ymXKWNXoikkkcuVlxwPCUcbXQW1Ajr8elFks4agZtRhXyWPG7ZLqfkNNV2E2
+         59ko3yeyVC6Nprf56q+NHGCA9boj6imkGMAi+FAMnvFJJqpRBVnz6Xw+6FpQXs506d/7
+         IWgQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of customer_service@freefilefillableforms.com designates 38.109.47.205 as permitted sender) smtp.mailfrom=customer_service@freefilefillableforms.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=freefilefillableforms.com
+Return-Path: <customer_service@freefilefillableforms.com>
+Received: from ironport.olt.com (mail.olt.com. [38.109.47.205])
+        by mx.google.com with ESMTPS id 586e51a60fabf-4908f528abbsi948658fac.332.2026.09.22.13.09.18
+        for <nakamoto.satoshi.b@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Sep 2026 13:09:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of customer_service@freefilefillableforms.com designates 38.109.47.205 as permitted sender) client-ip=38.109.47.205;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of customer_service@freefilefillableforms.com designates 38.109.47.205 as permitted sender) smtp.mailfrom=customer_service@freefilefillableforms.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=freefilefillableforms.com
+Authentication-Results: mail.freefilefillableforms.com; spf=Fail smtp.mailfrom=customer_service@freefilefillableforms.com; spf=Fail smtp.helo=postmaster@Mail.FreeFileFillableForms.com
+Received-SPF: Fail (mail.freefilefillableforms.com: domain of
+  customer_service@freefilefillableforms.com does not designate
+  192.168.62.38 as permitted sender) identity=mailfrom;
+  client-ip=192.168.62.38;
+  receiver=mail.freefilefillableforms.com;
+  envelope-from="customer_service@freefilefillableforms.com";
+  x-sender="customer_service@freefilefillableforms.com";
+  x-conformance=spf_only; x-record-type="v=spf1"
+Received-SPF: Fail (mail.freefilefillableforms.com: domain of
+  postmaster@Mail.FreeFileFillableForms.com does not designate
+  192.168.62.38 as permitted sender) identity=helo;
+  client-ip=192.168.62.38;
+  receiver=mail.freefilefillableforms.com;
+  envelope-from="customer_service@freefilefillableforms.com";
+  x-sender="postmaster@Mail.FreeFileFillableForms.com";
+  x-conformance=spf_only; x-record-type="v=spf1"
+IronPort-Data: =?us-ascii?q?A9a23=3AA1OS56hChaIuAeo+KdegF+7XX161zRIKZh0ujC4?=
+ =?us-ascii?q?5NGQNrF6WrkUPyWMZXzyPOfaLajTxLtwlPYmx/UkGv8LVydJnQAo5+3w8FHgiR?=
+ =?us-ascii?q?egppTi6wuYcB84gRyH6ZBoPA/42N5+QfKjYcleG/k33auK59CElvU21buGU5ND?=
+ =?us-ascii?q?sa3kZqTBMGH9JZSJLw4bVs6Yw6TSLK1rlVeDa/6UzDGSYNwtcaQr43U4jRCRH5?=
+ =?us-ascii?q?5wesBtA1rA3iGsiUFX2zxH5B7pHTU29wueRf2VaIgK6b76rILCR22rY+1EDEN6?=
+ =?us-ascii?q?ovLf/f2MLRrrbNwyDpH1MXrPkiR9HzsAw+v9qbrxFNxcR1W/PxIAZJNZl7PRcT?=
+ =?us-ascii?q?S8iI7bQn+EQSS5DHjtgPKZL0LHdLHWxsMiewUzCd3Lmx/hgC1szJssT/eMf7WR?=
+ =?us-ascii?q?mrKdFdWxdP0HS7w6x6PfhIgV2vewlJcriOYQDvTd7xC3eFvYnB5rrTKDD5Nse1?=
+ =?us-ascii?q?zA17v2it962i9ExMGs1Kk2eM1sRYBFMWPoDcC6TriGXW1VlRJi9/MLbIlQ/zTC?=
+ =?us-ascii?q?dFJDIOdvRPPKQSMh7n0KViGPC+23zBhw0M8aa0nyO9XfEairng3bgQIxLfFGn3?=
+ =?us-ascii?q?qICvbFR7jR75N4quZ+Tr+O0h0C/X99RKkgQ8yAqoKY17kmwCNL6WnVUZVaa6wU?=
+ =?us-ascii?q?EVYM4//IStGmw90YM3zukOw=3D=3D?=
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AKVcBEqOAxDs47sBcTsmjsMiBIKoaSvp037BL?=
+ =?us-ascii?q?7TETdfU7SKalfqyV8MjztiWVtN9yYh8dcLm7UcHqfZq1z+8W3WB7B9iftWfd1V?=
+ =?us-ascii?q?dBe+pZnO/fKkXbehEWodQtsJtdTw=3D=3D?=
+Received: from unknown (HELO Mail.FreeFileFillableForms.com) ([192.168.62.38])
+  by ironport.olt.com with ESMTP; 22 Sep 2026 21:09:16 +0100
+Received: from www.freefilefillableforms.com (192.168.13.133) by
+ Mail.FreeFileFillableForms.com (192.168.62.38) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 22 Sep 2026 15:09:11 -0500
+Date: Tue, 22 Sep 2026 15:09:17 -0500
+To: "nakamoto.satoshi.b@gmail.com" <nakamoto.satoshi.b@gmail.com>
+From: Customer Service <customer_service@freefilefillableforms.com>
+Subject: Free File Fillable Forms : Federal Tax Return Received
+Message-ID: <FmBXKWrIqCGg375WUaAcrMHI0UiKAmiKktx8I2Vck@www.freefilefillableforms.com>
+X-Mailer: FillableFormsMSExchg01
+MIME-Version: 1.0
+Content-Type: text/html; charset="iso-8859-1"
+Return-Path: customer_service@freefilefillableforms.com
+X-Originating-IP: [192.168.13.133]
+X-ClientProxiedBy: Mail.FreeFileFillableForms.com (192.168.62.38) To
+ Mail.FreeFileFillableForms.com (192.168.62.38)
+
+<!DOCTYPE html>
+<html>
+<head>
+    	<title>Free File Fillable Forms : Federal Tax Return Received</title>
+</head>
+<body style="margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;">
+<table style="width:100%;border-spacing:0px;border:none;margin:0px 0px 0px;padding:0px 0px 0px;font-family:Helvetica,sans-serif; margin: 0px 0px 0px 0px;">
+<tr>
+        <td style="margin:0px 0px 0px;padding:0px 0px 0px;font-family:Helvetica,sans-serif;" >
+	<table style="border-spacing:0px; border:none; padding:0px 0px 0px; margin: 0px 0px 0px 0px;width:100%;" align="center" cellspacing="0">
+        <!-- header area -->
+
+        <!-- content -->
+        <tr style="padding:0px 0px 0px 0px;">
+            	<td style="background:#fff; padding: 18px 15px 25px 15px; color: #333; font-size: 14px; font-family:Helvetica,sans-serif;">
+                <!-- greetings / h1 -->
+                <p style="margin:0px 0px 0px;">
+                    	Dear Free File Fillable Forms Taxpayer:
+                </p>
+                <!-- message -->
+                <p style="margin:24px 0px 0px 0px; padding: 0px 0px 0px 0px; text-align: justify;color: #00529c;font-weight:600;">
+                    	Your federal tax return was successfully queued for transmission.
+                </p>
+
+		<p style="margin:24px 0px 0px 0px; padding: 0px 0px 0px 0px; text-align: justify;line-height: 1.5;">
+                    	Next steps:<br>
+                    	Watch your email. In 24-48 hours, you should receive an email showing whether your filing is accepted or rejected by the IRS.
+                </p>
+		<p style="margin:24px 0px 0px 0px; padding: 0px 0px 0px 0px; text-align: justify;">
+                    	Your tax return is not complete until it is accepted by the IRS.
+                </p>
+
+                <p style="margin:24px 0px 0px 0px; padding: 0px 0px 0px 0px; text-align: justify;">
+                    	You can also check the status of your tax return by logging in to your Free File Fillable Forms account at <a style='color:#1a1aff;text-decoration:underline;' href='https://www.freefilefillableforms.com' target='_blank' rel='noopener noreferrer'>https://www.freefilefillableforms.com</a> and click the "<font style='font-weight:600;'>STEP 5. E-File Status : Tax Form</font>" Tab.
+                </p>
+		<p style="padding:24px 0px 0px 0px; margin: 0px 0px 0px;">
+                    	This email was generated from an automatic system, which is not monitored for responses.
+                </p>
+            	</td>
+        </tr>
+    	</table>
+        </td>
+</tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,840 @@
+Delivered-To: nakamoto.satoshi.b@gmail.com
+Received: by 2002:a05:6520:69e:b0:345:2a7f:b3ee with SMTP id j30csp166370lka;
+        Wed, 16 Sep 2026 22:18:03 -0700 (PDT)
+X-Received: by 2002:ac8:5e0f:0:b0:530:42e4:1b68 with SMTP id d75a77b69052e-5327f06025cmr95352951cf.44.1789622283155;
+        Wed, 16 Sep 2026 22:18:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789622283; cv=none;
+        d=google.com; s=arc-20260327;
+        b=muyM6QD2gmJ0ASq/TC5QsJHH4DKS1TiiDLxJRv2prhsfWn0v41Aj8y6apZPuj+cwNP
+         o8ZZlBw63ZpbCnisDWZvjO1oAluSA+nk6dqTnHBsLnh9Wm1XG902jH426cF+cmgVDllT
+         6nY4l9vDZZY4Ssm2gcnF3CtVikbtnj5dSQuUjFQyVF/xJTeoH4ekZLsmMldULrjn3CAk
+         LTK1Y2SokdRXa2Ul01ogrZ83naW0bCdgTmDB+9Tt7DoJMafxmkWP9H1OQqacfoaKoH+X
+         NSMGyTbz2/bcretCSUmiqTohx5gApjvWIZLwRoy58296FlJP2mXwWO1cujEpfEl4GxBx
+         dV3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:to:from:subject:message-id:date
+         :mime-version:dkim-signature;
+        bh=XyV1CWmHE14Oa6TM6fE6wTkgYkQlWRL5jusYizQlvx8=;
+        fh=mtEEO+BjM1K6Rfo/+PR7w55j6pexuv/qjp655fjoWC8=;
+        b=Bw9/pkKWgSsIS2i1Fs1rL+/oHqiCq9EI8sfdmVNp4+WdNWe+0vGaSfaBlyiiZOH50G
+         d2D63/qmkRkM6uZPpIBCs1Eek2gR8JA6d6JnH1hz0Ys0/0W/HaexUQCOTXN0HhBAGUu/
+         STcIXUZ6VgF05jkECwrZiFPVlQ+GI2cRKiGhpfjbbBo9zRA2bRgeAGMWC8++IK1CyLeS
+         Ug3rCRfRuqJR4nyeXNv7t2zanHFU5RJxPolnPSKPpZGco/blBleOEetiXGcm/cwf2S5o
+         1fu+6/Z63Ts6ZY7lANy1rKVG16Ja2XYYp5+IImoWGFuhD+GuXlBbIEoWVZgMK7J1XoSJ
+         iIQg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b=Zh+1u5ll;
+       spf=pass (google.com: domain of 3cnirahukaauxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3CnirahUKAAUxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3CnirahUKAAUxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id d75a77b69052e-5325088b985sor40010331cf.0.2026.09.16.22.18.02
+        for <nakamoto.satoshi.b@gmail.com>
+        (Google Transport Security);
+        Wed, 16 Sep 2026 22:18:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3cnirahukaauxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20251104 header.b=Zh+1u5ll;
+       spf=pass (google.com: domain of 3cnirahukaauxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3CnirahUKAAUxhmtqfwfqjwyx-stwjuq3lttlqj.htr@scholar-alerts.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1789622282; x=1790227082; dara=google.com;
+        h=content-transfer-encoding:content-type:to:from:subject:message-id
+         :date:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=XyV1CWmHE14Oa6TM6fE6wTkgYkQlWRL5jusYizQlvx8=;
+        b=Zh+1u5lloDBz5oNplrROoEVchw1VnSZNc/ty/zKYE5TWx7pr/cjDdiRJBffCevK/ca
+         90QjKDEkoJrdyFS7OoECjctcNc40Ko2lInMH90e5N7X2rEMjRILTiSAgYbmR0iM1MVbT
+         RzVBi6mW3PG1JQZmSvJKa7IfjOfn90tq7KAfnzz2BI5DUwc8kJfp/4+MXOsVOIucDp3x
+         RsNVHHC5EBBRzD00KSWew/lY4v7DDd6nEKSOIdSvXeUVt+gP7wayQE4MhFMfi7rLYgwY
+         F0Ft/A6kl/HPROoCqdJY8uZF/4Qhe4bk54RnYHiuNmmxK7aT5Zr/rub/EIQukPft8shb
+         Mr/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789622282; x=1790227082;
+        h=content-transfer-encoding:content-type:to:from:subject:message-id
+         :date:mime-version:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=XyV1CWmHE14Oa6TM6fE6wTkgYkQlWRL5jusYizQlvx8=;
+        b=gutAx+3N1hGMgX0Mx0am3gCiSlWAT5uQneMFQlYePFNkHAQDUWhJFF9ev82cP8rylZ
+         WyA0JQZNisKS4Ot4Fpaq2MMCsR3et5PtHsfVFJps6Ccy8EAUoLGzUOqrNTuskFg1DxAk
+         8FCCrHBwA9nkaQxFJKXqXyxpWlqyqZ1CHfb/CZUCKLVdpVZf1JYmp5pu1lP3N+dEulQJ
+         73ljFo2IUDR/pBHxIkAwob83UTG4pivnhMh5zkgvTscXc1VusQ16q8xzX160VC1oPzI9
+         Lo0NQPcP3kR6OUwzXXEShU2K6EWLzZbT/ON5hwpCvlPIXN24wFg4cVFoi+Glh056QqQn
+         xFwQ==
+X-Gm-Message-State: AFuF++mUPg9Z+6xMj5k6X421VG+DzAtI+IawcCZpYjBqhRmJQnp8+6TC
+	oFgicnRyFCs7Y/OZXFlB7dD1/8IQL3in1CieGUG8Pf+RLRZqjuzeyrFI+ldy8ZojtG1CMRY=
+MIME-Version: 1.0
+X-Received: by 2002:ac8:58d3:0:b0:530:3542:c8ad with SMTP id
+ d75a77b69052e-5327f1aae14mr93942421cf.36.1789622282659; Wed, 16 Sep 2026
+ 22:18:02 -0700 (PDT)
+Date: Wed, 16 Sep 2026 22:18:02 -0700
+Message-ID: <6aab780a.8abb3fe9.2459d4.199fscholar@google.com>
+Subject: 10 new citations to your articles
+From: Google Scholar Alerts <scholaralerts-noreply@google.com>
+To: nakamoto.satoshi.b@gmail.com
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:=
+schemas-microsoft-com:office:office"><head><!--[if gte mso 9]><xml><o:Offic=
+eDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:Off=
+iceDocumentSettings></xml><![endif]--><style>body{background-color:#fff}.gs=
+e_alrt_title{text-decoration:none}.gse_alrt_title:hover{text-decoration:und=
+erline} @media screen and (max-width: 599px) {.gse_alrt_sni br{display:none=
+;}}</style></head><body><!--[if gte mso 9]><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0"><tr><td style=3D"width:600px"><![endif]--><div styl=
+e=3D"font-family:arial,sans-serif;font-size:13px;line-height:16px;color:#22=
+2;width:100%;max-width:600px"><h3 style=3D"font-weight:lighter;font-size:18=
+px;line-height:20px;"></h3><h3 style=3D"font-weight:normal;font-size:18px;l=
+ine-height:20px;"></h3><h3 style=3D"font-weight:normal;margin:0;font-size:1=
+7px;line-height:20px;"><a href=3D"https://scholar.google.com/scholar_url?ur=
+l=3Dhttps://ieeexplore.ieee.org/abstract/document/11686457/&amp;hl=3Den&amp=
+;sa=3DX&amp;d=3D7364323525082380092&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;sc=
+isig=3DAIVdB-wOj1aeDw5zVKeiBRWdWgHJ&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3I=
+AAAAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=
+=3D0&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-siz=
+e:17px;color:#1a0dab;line-height:22px">Feather: A Two-Phase Propose-and-End=
+orse Consensus Protocol for Asynchronous Blockchains</a></h3><div style=3D"=
+color:#006621;line-height:18px">X Luo, J Zheng, H Huang, Z Yin, G Ye, B Xia=
+o=C2=A0- IEEE Transactions on Computers, 2026</div><div class=3D"gse_alrt_s=
+ni" style=3D"line-height:17px">BFT-like consensus protocols have two drawba=
+cks: i) their three-phase <br>synchronization latency is high, and ii) the =
+communication overhead among <br>consensus nodes is high. Consequently, we =
+are motivated to design a lightweight <br>consensus that enables low-commun=
+ication asynchronous operations. To this end, <br>we present a new consensu=
+s protocol, Feather, which is lightweight and enables <br>asynchronous bloc=
+kchains. Feather employs a two-phase propose-and-endorse=C2=A0=E2=80=A6</di=
+v><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:=
+8px 0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;"=
+ valign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;=
+mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =
+=E2=80=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp=
+;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3D=
+c8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%=
+26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%=
+3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit"=
+ style=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/sc=
+holar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto=
+"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td st=
+yle=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://=
+scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;=
+info=3DPHeWazpVM2YJ&amp;citsig=3DAOcXxEUAAAAAbIyrioszHIlc-KySRY-dMtrKDUY&am=
+p;cited-by=3D" style=3D"text-decoration:none;display:inline-block;padding:4=
+px 8px 4px 0;mso-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.g=
+oogle.com/intl/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16"=
+ width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding-ri=
+ght:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.co=
+m/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://=
+ieeexplore.ieee.org/abstract/document/11686457/&amp;rt=3DFeather:+A+Two-Pha=
+se+Propose-and-Endorse+Consensus+Protocol+for+Asynchronous+Blockchains&amp;=
+scisig=3DAIVdB-zUHZFHook7zqGdNbi8NiBx" style=3D"text-decoration:none;displa=
+y:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"Twitter" src=
+=3D"https://scholar.google.com/intl/en/scholar/images/1x/tw-32.png" border=
+=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td><td=
+ style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https=
+://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Di=
+n&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/document/11686457/&amp;rt=
+=3DFeather:+A+Two-Phase+Propose-and-Endorse+Consensus+Protocol+for+Asynchro=
+nous+Blockchains&amp;scisig=3DAIVdB-zUHZFHook7zqGdNbi8NiBx" style=3D"text-d=
+ecoration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><im=
+g alt=3D"LinkedIn" src=3D"https://scholar.google.com/intl/en/scholar/images=
+/1x/in-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-al=
+ign:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0=
+ 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Ds=
+cholaralrt&amp;ss=3Dfb&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/docum=
+ent/11686457/&amp;rt=3DFeather:+A+Two-Phase+Propose-and-Endorse+Consensus+P=
+rotocol+for+Asynchronous+Blockchains&amp;scisig=3DAIVdB-zUHZFHook7zqGdNbi8N=
+iBx" style=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso=
+-padding-alt:0;"><img alt=3D"Facebook" src=3D"https://scholar.google.com/in=
+tl/en/scholar/images/1x/fb-32.png" border=3D"0" height=3D"16" width=3D"16" =
+style=3D"vertical-align:top"></a></td></tr></tbody></table></div><br><h3 st=
+yle=3D"font-weight:normal;margin:0;font-size:17px;line-height:20px;"><span =
+style=3D"font-size:11px;font-weight:bold;color:#1a0dab;vertical-align:2px">=
+[PDF]</span> <a href=3D"https://scholar.google.com/scholar_url?url=3Dhttps:=
+//scholarworks.lib.csusb.edu/cgi/viewcontent.cgi%3Farticle%3D1506%26context=
+%3Dciima&amp;hl=3Den&amp;sa=3DX&amp;d=3D12647586700199713501&amp;ei=3DCnira=
+qvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-wIZ5nY0qfl_Q9IrgxwmxVF&amp;oi=3Dschol=
+aralrt&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fK=
+cN1c_&amp;html=3D&amp;pos=3D1&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt=
+_title" style=3D"font-size:17px;color:#1a0dab;line-height:22px">Between Blo=
+ckchain and Black Markets: South Africa&#39;s Legal Readiness for Crypto-dr=
+iven Cyberfraud</a></h3><div style=3D"color:#006621;line-height:18px">S Mab=
+unda, Y Chande=C2=A0- Communications of the IIMA, 2026</div><div class=3D"g=
+se_alrt_sni" style=3D"line-height:17px">This paper examines whether the pro=
+liferation of cryptocurrency-facilitated fraud <br>warrants a reclassificat=
+ion of the terrestrial crime of fraud into the distinct statutory <br>offen=
+ce of cyberfraud under South African law. Engaging with established fraud <=
+br>typologies=E2=80=94exit scams, Initial Coin Offering (ICO) scams, Ponzi =
+schemes, pump-and-<br>dump schemes, and market manipulation=E2=80=94the art=
+icle tests their definitional fit <br>against both the common law of fraud =
+and section 8 of the Cybercrimes Act 19 of=C2=A0=E2=80=A6</div><table cellp=
+adding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td=
+ style=3D"line-height:18px;font-size:15px;padding-right:8px;" valign=3D"top=
+">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-padding-al=
+t:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin=
+: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</span><a href=
+=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=
+=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm=
+3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" style=3D=
+"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vert=
+ical-align:top;" src=3D"https://scholar.google.com/intl/en/scholar/images/1=
+x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><table cellp=
+adding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td style=3D"padding=
+-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google=
+.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;info=3D3dpbExh=
+Bha8J&amp;citsig=3DAOcXxEUAAAAAbIyriiNViSKryp8LvtYPt1QtRn0&amp;cited-by=3D"=
+ style=3D"text-decoration:none;display:inline-block;padding:4px 8px 4px 0;m=
+so-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.google.com/intl=
+/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16" width=3D"16" =
+style=3D"vertical-align:top"></a></td><td style=3D"padding-right:4px;mso-pa=
+dding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_shar=
+e?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://scholarworks.l=
+ib.csusb.edu/cgi/viewcontent.cgi%3Farticle%3D1506%26context%3Dciima&amp;rt=
+=3DBetween+Blockchain+and+Black+Markets:+South+Africa%27s+Legal+Readiness+f=
+or+Crypto-driven+Cyberfraud&amp;scisig=3DAIVdB-zUevqDcVBeW5SUBXBZdUhz" styl=
+e=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso-padding-=
+alt:0;"><img alt=3D"Twitter" src=3D"https://scholar.google.com/intl/en/scho=
+lar/images/1x/tw-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"v=
+ertical-align:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:=
+4px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&=
+amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps://scholarworks.lib.csusb.e=
+du/cgi/viewcontent.cgi%3Farticle%3D1506%26context%3Dciima&amp;rt=3DBetween+=
+Blockchain+and+Black+Markets:+South+Africa%27s+Legal+Readiness+for+Crypto-d=
+riven+Cyberfraud&amp;scisig=3DAIVdB-zUevqDcVBeW5SUBXBZdUhz" style=3D"text-d=
+ecoration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><im=
+g alt=3D"LinkedIn" src=3D"https://scholar.google.com/intl/en/scholar/images=
+/1x/in-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-al=
+ign:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0=
+ 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Ds=
+cholaralrt&amp;ss=3Dfb&amp;url=3Dhttps://scholarworks.lib.csusb.edu/cgi/vie=
+wcontent.cgi%3Farticle%3D1506%26context%3Dciima&amp;rt=3DBetween+Blockchain=
++and+Black+Markets:+South+Africa%27s+Legal+Readiness+for+Crypto-driven+Cybe=
+rfraud&amp;scisig=3DAIVdB-zUevqDcVBeW5SUBXBZdUhz" style=3D"text-decoration:=
+none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"F=
+acebook" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/fb-32.=
+png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"><=
+/a></td></tr></tbody></table></div><br><h3 style=3D"font-weight:normal;marg=
+in:0;font-size:17px;line-height:20px;"><a href=3D"https://scholar.google.co=
+m/scholar_url?url=3Dhttps://ieeexplore.ieee.org/abstract/document/11678005/=
+&amp;hl=3Den&amp;sa=3DX&amp;d=3D2497191828226352430&amp;ei=3DCniraqvwIpu36r=
+QP-e-6uAo&amp;scisig=3DAIVdB-yhg7p9KNSph9tDtAosE5D8&amp;oi=3Dscholaralrt&am=
+p;hist=3Dc8DZm3IAAAAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp=
+;html=3D&amp;pos=3D2&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" s=
+tyle=3D"font-size:17px;color:#1a0dab;line-height:22px">BSV Blockchain as Bi=
+g Data Infrastructure: Distributed Consensus, Terabyte Blocks, and Billion-=
+Transaction Throughput</a></h3><div style=3D"color:#006621;line-height:18px=
+">CS Wright=C2=A0- 2026 7th International Conference on Big Data=C2=A0=E2=
+=80=A6, 2026</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px">Pu=
+blic blockchain networks are conventionally treated as financial ledgers <b=
+r>constrained by throughput limitations. This paper reframes the BSV blockc=
+hain and <br>its Teranode architecture as a big data infrastructure: a glob=
+ally distributed, append-<br>only, Merkle-indexed data platform whose scali=
+ng trajectory follows established <br>principles of distributed systems eng=
+ineering. We present an architectural analysis of <br>Teranode&#39;s role-d=
+ecomposed pipeline, in which transaction validation, block=C2=A0=E2=80=A6</=
+div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"paddin=
+g:8px 0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px=
+;" valign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15p=
+x;mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =
+=E2=80=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp=
+;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3D=
+c8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%=
+26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%=
+3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit"=
+ style=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/sc=
+holar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto=
+"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td st=
+yle=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://=
+scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;=
+info=3DLqVwsbzOpyIJ&amp;citsig=3DAOcXxEUAAAAAbIyrit2zqy7fjyY63gJQ__Hxmlg&am=
+p;cited-by=3D" style=3D"text-decoration:none;display:inline-block;padding:4=
+px 8px 4px 0;mso-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.g=
+oogle.com/intl/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16"=
+ width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding-ri=
+ght:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.co=
+m/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://=
+ieeexplore.ieee.org/abstract/document/11678005/&amp;rt=3DBSV+Blockchain+as+=
+Big+Data+Infrastructure:+Distributed+Consensus,+Terabyte+Blocks,+and+Billio=
+n-Transaction+Throughput&amp;scisig=3DAIVdB-xbo7bMoRD6Exx1FVvh4p_0" style=
+=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso-padding-a=
+lt:0;"><img alt=3D"Twitter" src=3D"https://scholar.google.com/intl/en/schol=
+ar/images/1x/tw-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"ve=
+rtical-align:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4=
+px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&a=
+mp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps://ieeexplore.ieee.org/abstr=
+act/document/11678005/&amp;rt=3DBSV+Blockchain+as+Big+Data+Infrastructure:+=
+Distributed+Consensus,+Terabyte+Blocks,+and+Billion-Transaction+Throughput&=
+amp;scisig=3DAIVdB-xbo7bMoRD6Exx1FVvh4p_0" style=3D"text-decoration:none;di=
+splay:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"LinkedIn=
+" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/in-32.png" bo=
+rder=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td=
+><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"h=
+ttps://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=
+=3Dfb&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/document/11678005/&amp=
+;rt=3DBSV+Blockchain+as+Big+Data+Infrastructure:+Distributed+Consensus,+Ter=
+abyte+Blocks,+and+Billion-Transaction+Throughput&amp;scisig=3DAIVdB-xbo7bMo=
+RD6Exx1FVvh4p_0" style=3D"text-decoration:none;display:inline-block;padding=
+:4px 8px;mso-padding-alt:0;"><img alt=3D"Facebook" src=3D"https://scholar.g=
+oogle.com/intl/en/scholar/images/1x/fb-32.png" border=3D"0" height=3D"16" w=
+idth=3D"16" style=3D"vertical-align:top"></a></td></tr></tbody></table></di=
+v><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;line-height:2=
+0px;"><a href=3D"https://scholar.google.com/scholar_url?url=3Dhttps://ieeex=
+plore.ieee.org/abstract/document/11677758/&amp;hl=3Den&amp;sa=3DX&amp;d=3D6=
+271298614396739177&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-zJdK=
+srBdtQ0DHn6ADAv9N6&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:10739191307=
+457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=3D3&amp;folt=3Dc=
+it&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:#1a0=
+dab;line-height:22px">Cryptographic Proof Ingestion at Scale: Integrating B=
+lockchain Verification Events into Enterprise Streaming Pipelines</a></h3><=
+div style=3D"color:#006621;line-height:18px">CS Wright=C2=A0- 2026 7th Inte=
+rnational Conference on Big Data=C2=A0=E2=80=A6, 2026</div><div class=3D"gs=
+e_alrt_sni" style=3D"line-height:17px">When enterprises adopt blockchain se=
+ttlement for micropayments, each confirmed <br>transaction produces a crypt=
+ographic verification event=E2=80=93a block header, a Merkle <br>inclusion =
+proof, and associated metadata=E2=80=93that must be ingested, verified, rec=
+onciled <br>with internal state, and persisted for audit. At scale, this ve=
+rification data constitutes a <br>streaming big data workload with distinct=
+ive properties: fixed-size headers (80 bytes), <br>logarithmically-scaling =
+proofs (26-40 hashes for 10^5-10^9 transactions per block)=C2=A0=E2=80=A6</=
+div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"paddin=
+g:8px 0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px=
+;" valign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15p=
+x;mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =
+=E2=80=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp=
+;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3D=
+c8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%=
+26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%=
+3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit"=
+ style=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/sc=
+holar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto=
+"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td st=
+yle=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://=
+scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;=
+info=3DaV6E79wgCFcJ&amp;citsig=3DAOcXxEUAAAAAbIyriva4h-5cUr-HLpooM9we5Hs&am=
+p;cited-by=3D" style=3D"text-decoration:none;display:inline-block;padding:4=
+px 8px 4px 0;mso-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.g=
+oogle.com/intl/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16"=
+ width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding-ri=
+ght:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.co=
+m/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://=
+ieeexplore.ieee.org/abstract/document/11677758/&amp;rt=3DCryptographic+Proo=
+f+Ingestion+at+Scale:+Integrating+Blockchain+Verification+Events+into+Enter=
+prise+Streaming+Pipelines&amp;scisig=3DAIVdB-wMXAiULLKxPUFr7_V-u8gx" style=
+=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso-padding-a=
+lt:0;"><img alt=3D"Twitter" src=3D"https://scholar.google.com/intl/en/schol=
+ar/images/1x/tw-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"ve=
+rtical-align:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4=
+px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&a=
+mp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps://ieeexplore.ieee.org/abstr=
+act/document/11677758/&amp;rt=3DCryptographic+Proof+Ingestion+at+Scale:+Int=
+egrating+Blockchain+Verification+Events+into+Enterprise+Streaming+Pipelines=
+&amp;scisig=3DAIVdB-wMXAiULLKxPUFr7_V-u8gx" style=3D"text-decoration:none;d=
+isplay:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"LinkedI=
+n" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/in-32.png" b=
+order=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"></a></t=
+d><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"=
+https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;s=
+s=3Dfb&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/document/11677758/&am=
+p;rt=3DCryptographic+Proof+Ingestion+at+Scale:+Integrating+Blockchain+Verif=
+ication+Events+into+Enterprise+Streaming+Pipelines&amp;scisig=3DAIVdB-wMXAi=
+ULLKxPUFr7_V-u8gx" style=3D"text-decoration:none;display:inline-block;paddi=
+ng:4px 8px;mso-padding-alt:0;"><img alt=3D"Facebook" src=3D"https://scholar=
+.google.com/intl/en/scholar/images/1x/fb-32.png" border=3D"0" height=3D"16"=
+ width=3D"16" style=3D"vertical-align:top"></a></td></tr></tbody></table></=
+div><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;line-height=
+:20px;"><a href=3D"https://scholar.google.com/scholar_url?url=3Dhttps://iee=
+explore.ieee.org/abstract/document/11677995/&amp;hl=3Den&amp;sa=3DX&amp;d=
+=3D9493911151814973913&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-=
+wjw0pJLMnS_aZ5UooUMTK0&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:1073919=
+1307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=3D4&amp;folt=
+=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:=
+#1a0dab;line-height:22px">Data-Driven Micropayment Routing: Cost-Curve Anal=
+ytics, Streaming Surveillance, and Dual-Rail Decision Engines</a></h3><div =
+style=3D"color:#006621;line-height:18px">CS Wright=C2=A0- 2026 7th Internat=
+ional Conference on Big Data=C2=A0=E2=80=A6, 2026</div><div class=3D"gse_al=
+rt_sni" style=3D"line-height:17px">Micropayment platforms that route all tr=
+ansactions through a single legacy processor <br>lose up to 71.65% of sub-f=
+ive-dollar volume to effective fees exceeding 10% of <br>transaction value=
+=E2=80=93a routing inefficiency, not a pricing inevitability. This paper <b=
+r>formalises micropayment routing as a streaming big data analytics problem=
+ and <br>proposes a three-layer framework: structural cost-curve models tha=
+t derive value-<br>dependent breakeven thresholds across heterogeneous rail=
+s, cumulative sum=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td style=3D"line-height:18=
+px;font-size:15px;padding-right:8px;" valign=3D"top">=E2=80=A2</td><td styl=
+e=3D"line-height:18px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span st=
+yle=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A Peer-to-Peer Electro=
+nic Cash System=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.googl=
+e.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/c=
+itations%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_for_vie=
+w%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" style=3D"padding:8px 0;"><img heig=
+ht=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=3D"ht=
+tps://scholar.google.com/intl/en/scholar/images/1x/link-36.png"></a></td></=
+tr></table><div style=3D"width:auto"><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tbody><tr><td style=3D"padding-right:4px;mso-padding-a=
+lt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/citations?hl=3Den&a=
+mp;update_op=3Demail_library_add&amp;info=3D2RkNReQlwYMJ&amp;citsig=3DAOcXx=
+EUAAAAAbIyriqr8MkVJ9fbi3bywhuTaLWU&amp;cited-by=3D" style=3D"text-decoratio=
+n:none;display:inline-block;padding:4px 8px 4px 0;mso-padding-alt:0;"><img =
+alt=3D"Save" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/sa=
+ve-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:=
+top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"=
+><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dschol=
+aralrt&amp;ss=3Dtw&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/document/=
+11677995/&amp;rt=3DData-Driven+Micropayment+Routing:+Cost-Curve+Analytics,+=
+Streaming+Surveillance,+and+Dual-Rail+Decision+Engines&amp;scisig=3DAIVdB-x=
+6V_eG3ZNExs9KhuL6xcqx" style=3D"text-decoration:none;display:inline-block;p=
+adding:4px 8px;mso-padding-alt:0;"><img alt=3D"Twitter" src=3D"https://scho=
+lar.google.com/intl/en/scholar/images/1x/tw-32.png" border=3D"0" height=3D"=
+16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding=
+-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google=
+.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps=
+://ieeexplore.ieee.org/abstract/document/11677995/&amp;rt=3DData-Driven+Mic=
+ropayment+Routing:+Cost-Curve+Analytics,+Streaming+Surveillance,+and+Dual-R=
+ail+Decision+Engines&amp;scisig=3DAIVdB-x6V_eG3ZNExs9KhuL6xcqx" style=3D"te=
+xt-decoration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"=
+><img alt=3D"LinkedIn" src=3D"https://scholar.google.com/intl/en/scholar/im=
+ages/1x/in-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertica=
+l-align:top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16=
+px 0 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=
+=3Dscholaralrt&amp;ss=3Dfb&amp;url=3Dhttps://ieeexplore.ieee.org/abstract/d=
+ocument/11677995/&amp;rt=3DData-Driven+Micropayment+Routing:+Cost-Curve+Ana=
+lytics,+Streaming+Surveillance,+and+Dual-Rail+Decision+Engines&amp;scisig=
+=3DAIVdB-x6V_eG3ZNExs9KhuL6xcqx" style=3D"text-decoration:none;display:inli=
+ne-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"Facebook" src=3D"h=
+ttps://scholar.google.com/intl/en/scholar/images/1x/fb-32.png" border=3D"0"=
+ height=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td></tr></tb=
+ody></table></div><br><h3 style=3D"font-weight:normal;margin:0;font-size:17=
+px;line-height:20px;"><span style=3D"font-size:11px;font-weight:bold;color:=
+#1a0dab;vertical-align:2px">[PDF]</span> <a href=3D"https://scholar.google.=
+com/scholar_url?url=3Dhttps://www.researchgate.net/profile/Shahbaz-Ali-S-Al=
+i/publication/414226981_The_From_Individual_Cognition_to_Organizational_Rea=
+diness_A_Dual-Level_Framework_for_Blockchain_Adoption_in_Public_and_Private=
+_Sector_Organizations/links/6aa4385db8b306746a9a10cf/The-From-Individual-Co=
+gnition-to-Organizational-Readiness-A-Dual-Level-Framework-for-Blockchain-A=
+doption-in-Public-and-Private-Sector-Organizations.pdf&amp;hl=3Den&amp;sa=
+=3DX&amp;d=3D10321079113174800708&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scis=
+ig=3DAIVdB-xvmlUVWdb86cHXmnXizI-B&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAA=
+AAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=
+=3D5&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-siz=
+e:17px;color:#1a0dab;line-height:22px">The From Individual Cognition to Org=
+anizational Readiness: A Dual-Level Framework for Blockchain Adoption in Pu=
+blic and Private Sector Organizations</a></h3><div style=3D"color:#006621;l=
+ine-height:18px">S Ali=C2=A0- Journal of Intelligent Decision Making and In=
+formation=C2=A0=E2=80=A6, 2026</div><div class=3D"gse_alrt_sni" style=3D"li=
+ne-height:17px">The blockchain technology has evolved to become an online e=
+ngine that can <br>facilitate diverse government and business solutions. Al=
+though aware of its benefits, <br>there is still low use of it and adoption=
+ is low among organizations. Previous research <br>used technology oriented=
+ and linear theoretical frameworks, including TAM, UTAUT <br>and TOE, which=
+ failed to consider the human dimension in the use of technology. <br>These=
+ views are transformed into organizational commitment. This research paper=
+=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" style=3D"padding:8px 0"><tr><td style=3D"line-height:18px;font-size:15px;=
+padding-right:8px;" valign=3D"top">=E2=80=A2</td><td style=3D"line-height:1=
+8px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-ra=
+ise:4px;">Cites: =E2=80=AABitcoin: A peer-to-peer electronic cash system. 2=
+008=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.google.com/citati=
+ons?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fv=
+iew_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IA=
+AAAJ:KxtntwgDAa4C%26hl%3Den" style=3D"padding:8px 0;"><img height=3D"18" wi=
+dth=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=3D"https://schola=
+r.google.com/intl/en/scholar/images/1x/link-36.png"></a></td></tr></table><=
+div style=3D"width:auto"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0=
+ 0;"><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;update_op=
+=3Demail_library_add&amp;info=3DRNl8H8XWO48J&amp;citsig=3DAOcXxEUAAAAAbIyri=
+nXsC_J2D7cmtT_OEoykE70&amp;cited-by=3D" style=3D"text-decoration:none;displ=
+ay:inline-block;padding:4px 8px 4px 0;mso-padding-alt:0;"><img alt=3D"Save"=
+ src=3D"https://scholar.google.com/intl/en/scholar/images/1x/save-32.png" b=
+order=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"></a></t=
+d><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"=
+https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;s=
+s=3Dtw&amp;url=3Dhttps://www.researchgate.net/profile/Shahbaz-Ali-S-Ali/pub=
+lication/414226981_The_From_Individual_Cognition_to_Organizational_Readines=
+s_A_Dual-Level_Framework_for_Blockchain_Adoption_in_Public_and_Private_Sect=
+or_Organizations/links/6aa4385db8b306746a9a10cf/The-From-Individual-Cogniti=
+on-to-Organizational-Readiness-A-Dual-Level-Framework-for-Blockchain-Adopti=
+on-in-Public-and-Private-Sector-Organizations.pdf&amp;rt=3DThe+From+Individ=
+ual+Cognition+to+Organizational+Readiness:+A+Dual-Level+Framework+for+Block=
+chain+Adoption+in+Public+and+Private+Sector+Organizations&amp;scisig=3DAIVd=
+B-zKXVy_YnUWUs40hDsohYk9" style=3D"text-decoration:none;display:inline-bloc=
+k;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"Twitter" src=3D"https://s=
+cholar.google.com/intl/en/scholar/images/1x/tw-32.png" border=3D"0" height=
+=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"pad=
+ding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.go=
+ogle.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dh=
+ttps://www.researchgate.net/profile/Shahbaz-Ali-S-Ali/publication/414226981=
+_The_From_Individual_Cognition_to_Organizational_Readiness_A_Dual-Level_Fra=
+mework_for_Blockchain_Adoption_in_Public_and_Private_Sector_Organizations/l=
+inks/6aa4385db8b306746a9a10cf/The-From-Individual-Cognition-to-Organization=
+al-Readiness-A-Dual-Level-Framework-for-Blockchain-Adoption-in-Public-and-P=
+rivate-Sector-Organizations.pdf&amp;rt=3DThe+From+Individual+Cognition+to+O=
+rganizational+Readiness:+A+Dual-Level+Framework+for+Blockchain+Adoption+in+=
+Public+and+Private+Sector+Organizations&amp;scisig=3DAIVdB-zKXVy_YnUWUs40hD=
+sohYk9" style=3D"text-decoration:none;display:inline-block;padding:4px 8px;=
+mso-padding-alt:0;"><img alt=3D"LinkedIn" src=3D"https://scholar.google.com=
+/intl/en/scholar/images/1x/in-32.png" border=3D"0" height=3D"16" width=3D"1=
+6" style=3D"vertical-align:top"></a></td><td style=3D"padding-right:4px;mso=
+-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_s=
+hare?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dfb&amp;url=3Dhttps://www.researc=
+hgate.net/profile/Shahbaz-Ali-S-Ali/publication/414226981_The_From_Individu=
+al_Cognition_to_Organizational_Readiness_A_Dual-Level_Framework_for_Blockch=
+ain_Adoption_in_Public_and_Private_Sector_Organizations/links/6aa4385db8b30=
+6746a9a10cf/The-From-Individual-Cognition-to-Organizational-Readiness-A-Dua=
+l-Level-Framework-for-Blockchain-Adoption-in-Public-and-Private-Sector-Orga=
+nizations.pdf&amp;rt=3DThe+From+Individual+Cognition+to+Organizational+Read=
+iness:+A+Dual-Level+Framework+for+Blockchain+Adoption+in+Public+and+Private=
++Sector+Organizations&amp;scisig=3DAIVdB-zKXVy_YnUWUs40hDsohYk9" style=3D"t=
+ext-decoration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;=
+"><img alt=3D"Facebook" src=3D"https://scholar.google.com/intl/en/scholar/i=
+mages/1x/fb-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertic=
+al-align:top"></a></td></tr></tbody></table></div><br><h3 style=3D"font-wei=
+ght:normal;margin:0;font-size:17px;line-height:20px;"><span style=3D"font-s=
+ize:11px;font-weight:bold;color:#1a0dab;vertical-align:2px">[PDF]</span> <a=
+ href=3D"https://scholar.google.com/scholar_url?url=3Dhttps://revistas.unil=
+ibre.edu.co/index.php/interfaces/article/view/14066/13885&amp;hl=3Den&amp;s=
+a=3DX&amp;d=3D5593370768860872766&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scis=
+ig=3DAIVdB-zy3-mU3Wstg60LQnBMgvyF&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAA=
+AAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=
+=3D6&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-siz=
+e:17px;color:#1a0dab;line-height:22px">Application of Blockchain Technology=
+ in a Prototype for Complaint Management at Family Police Stations: A Case =
+Study of Fusagasug=C3=A1, Colombia</a></h3><div style=3D"color:#006621;line=
+-height:18px">LF Casta=C3=B1eda, JE Camargo=C2=A0- Interfaces, 2026</div><d=
+iv class=3D"gse_alrt_sni" style=3D"line-height:17px">In the public sector, =
+administrative procedures generate case files that are <br>traditionally st=
+ored in physical archives or relational databases. Ensuring the <br>authent=
+icity, reliability, and integrity of these records is critical to achieving=
+ the <br>mission of Colombian Family Police Stations (Comisar=C3=ADas de Fa=
+milia), which protect <br>and restore the rights of family members affected=
+ by intra-family violence. <br>Nevertheless, conventional information syste=
+ms can be vulnerable to falsification=C2=A0=E2=80=A6</div><table cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px 0"><tr><td styl=
+e=3D"line-height:18px;font-size:15px;padding-right:8px;" valign=3D"top">=E2=
+=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-padding-alt:8px=
+ 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A p=
+eer-to-peer electronic cash system. 2008=E2=80=AC&nbsp;&nbsp;</span><a href=
+=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=
+=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user%3Dc8DZm=
+3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:KxtntwgDAa4C%26hl%3Den" style=3D=
+"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=3D"vert=
+ical-align:top;" src=3D"https://scholar.google.com/intl/en/scholar/images/1=
+x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><table cellp=
+adding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td style=3D"padding=
+-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google=
+.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;info=3DPoABTxS=
+ln00J&amp;citsig=3DAOcXxEUAAAAAbIyriopdZD8hmXvyBNjPzhpBRIA&amp;cited-by=3D"=
+ style=3D"text-decoration:none;display:inline-block;padding:4px 8px 4px 0;m=
+so-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.google.com/intl=
+/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16" width=3D"16" =
+style=3D"vertical-align:top"></a></td><td style=3D"padding-right:4px;mso-pa=
+dding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_shar=
+e?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://revistas.unili=
+bre.edu.co/index.php/interfaces/article/view/14066/13885&amp;rt=3DApplicati=
+on+of+Blockchain+Technology+in+a+Prototype+for+Complaint+Management+at+Fami=
+ly+Police+Stations:+A+Case+Study+of+Fusagasug%C3%A1,+Colombia&amp;scisig=3D=
+AIVdB-wPiPFP8h2r_4YV2BO_eDcd" style=3D"text-decoration:none;display:inline-=
+block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"Twitter" src=3D"https=
+://scholar.google.com/intl/en/scholar/images/1x/tw-32.png" border=3D"0" hei=
+ght=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"=
+padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar=
+.google.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=
+=3Dhttps://revistas.unilibre.edu.co/index.php/interfaces/article/view/14066=
+/13885&amp;rt=3DApplication+of+Blockchain+Technology+in+a+Prototype+for+Com=
+plaint+Management+at+Family+Police+Stations:+A+Case+Study+of+Fusagasug%C3%A=
+1,+Colombia&amp;scisig=3DAIVdB-wPiPFP8h2r_4YV2BO_eDcd" style=3D"text-decora=
+tion:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=
+=3D"LinkedIn" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/i=
+n-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:t=
+op"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;">=
+<a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dschola=
+ralrt&amp;ss=3Dfb&amp;url=3Dhttps://revistas.unilibre.edu.co/index.php/inte=
+rfaces/article/view/14066/13885&amp;rt=3DApplication+of+Blockchain+Technolo=
+gy+in+a+Prototype+for+Complaint+Management+at+Family+Police+Stations:+A+Cas=
+e+Study+of+Fusagasug%C3%A1,+Colombia&amp;scisig=3DAIVdB-wPiPFP8h2r_4YV2BO_e=
+Dcd" style=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso=
+-padding-alt:0;"><img alt=3D"Facebook" src=3D"https://scholar.google.com/in=
+tl/en/scholar/images/1x/fb-32.png" border=3D"0" height=3D"16" width=3D"16" =
+style=3D"vertical-align:top"></a></td></tr></tbody></table></div><br><h3 st=
+yle=3D"font-weight:normal;margin:0;font-size:17px;line-height:20px;"><span =
+style=3D"font-size:11px;font-weight:bold;color:#1a0dab;vertical-align:2px">=
+[PDF]</span> <a href=3D"https://scholar.google.com/scholar_url?url=3Dhttps:=
+//www.researchgate.net/profile/Dipak-Kundu-4/publication/414188050_COHERENC=
+E_-The_Multidisciplinary_Research_Journal_INDUSTRY_40_AND_THE_FUTURE_OF_COM=
+MERCE_ECONOMIC_IMPLICATIONS_FOR_INDIA/links/6aa2bcfc6214794af2db74c2/COHERE=
+NCE-The-Multidisciplinary-Research-Journal-INDUSTRY-40-AND-THE-FUTURE-OF-CO=
+MMERCE-ECONOMIC-IMPLICATIONS-FOR-INDIA.pdf&amp;hl=3Den&amp;sa=3DX&amp;d=3D5=
+67035406074458000&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-wkPW8=
+usDr3VhVBeIHWBOed&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:107391913074=
+57540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=3D7&amp;folt=3Dci=
+t&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-size:17px;color:#1a0d=
+ab;line-height:22px">INDUSTRY 4.0 AND THE FUTURE OF COMMERCE: ECONOMIC IMPL=
+ICATIONS FOR INDIA</a></h3><div style=3D"color:#006621;line-height:18px">D =
+Kundu, S Talukdar</div><div class=3D"gse_alrt_sni" style=3D"line-height:17p=
+x">ABSTRACT Industry 4.0, characterized by the convergence of advanced digi=
+tal <br>technologies such as Artificial Intelligence (AI), Internet of Thin=
+gs (IoT), Big Data, <br>blockchain, and robotics, is fundamentally reshapin=
+g global industrial and economic <br>landscapes. This paper deeply explores=
+ the profound economic implications of <br>Industry 4.0 for India&#39;s bur=
+geoning commerce sector. As India stands at a critical <br>juncture of digi=
+tal transformation and economic growth, understanding how these=C2=A0=E2=80=
+=A6</div><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"p=
+adding:8px 0"><tr><td style=3D"line-height:18px;font-size:15px;padding-righ=
+t:8px;" valign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-siz=
+e:15px;mso-padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Ci=
+tes: =E2=80=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;=
+&nbsp;</span><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;us=
+er=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_cita=
+tion%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%=
+26hl%3Den" style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"=
+Edit" style=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/=
+en/scholar/images/1x/link-36.png"></a></td></tr></table><div style=3D"width=
+:auto"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><=
+td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"htt=
+ps://scholar.google.com/citations?hl=3Den&amp;update_op=3Demail_library_add=
+&amp;info=3DkC8jkrKD3gcJ&amp;citsig=3DAOcXxEUAAAAAbIyripr6gtHbShOufiujdkuab=
+cw&amp;cited-by=3D" style=3D"text-decoration:none;display:inline-block;padd=
+ing:4px 8px 4px 0;mso-padding-alt:0;"><img alt=3D"Save" src=3D"https://scho=
+lar.google.com/intl/en/scholar/images/1x/save-32.png" border=3D"0" height=
+=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"pad=
+ding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.go=
+ogle.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dh=
+ttps://www.researchgate.net/profile/Dipak-Kundu-4/publication/414188050_COH=
+ERENCE_-The_Multidisciplinary_Research_Journal_INDUSTRY_40_AND_THE_FUTURE_O=
+F_COMMERCE_ECONOMIC_IMPLICATIONS_FOR_INDIA/links/6aa2bcfc6214794af2db74c2/C=
+OHERENCE-The-Multidisciplinary-Research-Journal-INDUSTRY-40-AND-THE-FUTURE-=
+OF-COMMERCE-ECONOMIC-IMPLICATIONS-FOR-INDIA.pdf&amp;rt=3DINDUSTRY+4.0+AND+T=
+HE+FUTURE+OF+COMMERCE:+ECONOMIC+IMPLICATIONS+FOR+INDIA&amp;scisig=3DAIVdB-z=
+PpjtIULKYuNbJYvEp-sKt" style=3D"text-decoration:none;display:inline-block;p=
+adding:4px 8px;mso-padding-alt:0;"><img alt=3D"Twitter" src=3D"https://scho=
+lar.google.com/intl/en/scholar/images/1x/tw-32.png" border=3D"0" height=3D"=
+16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding=
+-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google=
+.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps=
+://www.researchgate.net/profile/Dipak-Kundu-4/publication/414188050_COHEREN=
+CE_-The_Multidisciplinary_Research_Journal_INDUSTRY_40_AND_THE_FUTURE_OF_CO=
+MMERCE_ECONOMIC_IMPLICATIONS_FOR_INDIA/links/6aa2bcfc6214794af2db74c2/COHER=
+ENCE-The-Multidisciplinary-Research-Journal-INDUSTRY-40-AND-THE-FUTURE-OF-C=
+OMMERCE-ECONOMIC-IMPLICATIONS-FOR-INDIA.pdf&amp;rt=3DINDUSTRY+4.0+AND+THE+F=
+UTURE+OF+COMMERCE:+ECONOMIC+IMPLICATIONS+FOR+INDIA&amp;scisig=3DAIVdB-zPpjt=
+IULKYuNbJYvEp-sKt" style=3D"text-decoration:none;display:inline-block;paddi=
+ng:4px 8px;mso-padding-alt:0;"><img alt=3D"LinkedIn" src=3D"https://scholar=
+.google.com/intl/en/scholar/images/1x/in-32.png" border=3D"0" height=3D"16"=
+ width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding-ri=
+ght:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.co=
+m/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dfb&amp;url=3Dhttps://=
+www.researchgate.net/profile/Dipak-Kundu-4/publication/414188050_COHERENCE_=
+-The_Multidisciplinary_Research_Journal_INDUSTRY_40_AND_THE_FUTURE_OF_COMME=
+RCE_ECONOMIC_IMPLICATIONS_FOR_INDIA/links/6aa2bcfc6214794af2db74c2/COHERENC=
+E-The-Multidisciplinary-Research-Journal-INDUSTRY-40-AND-THE-FUTURE-OF-COMM=
+ERCE-ECONOMIC-IMPLICATIONS-FOR-INDIA.pdf&amp;rt=3DINDUSTRY+4.0+AND+THE+FUTU=
+RE+OF+COMMERCE:+ECONOMIC+IMPLICATIONS+FOR+INDIA&amp;scisig=3DAIVdB-zPpjtIUL=
+KYuNbJYvEp-sKt" style=3D"text-decoration:none;display:inline-block;padding:=
+4px 8px;mso-padding-alt:0;"><img alt=3D"Facebook" src=3D"https://scholar.go=
+ogle.com/intl/en/scholar/images/1x/fb-32.png" border=3D"0" height=3D"16" wi=
+dth=3D"16" style=3D"vertical-align:top"></a></td></tr></tbody></table></div=
+><br><h3 style=3D"font-weight:normal;margin:0;font-size:17px;line-height:20=
+px;"><span style=3D"font-size:11px;font-weight:bold;color:#1a0dab;vertical-=
+align:2px">[PDF]</span> <a href=3D"https://scholar.google.com/scholar_url?u=
+rl=3Dhttps://www.researchgate.net/profile/Solomon-Oke-3/publication/4141372=
+69_Blockchain-Enabled_Digital_Twin_and_AI_Framework_for_Real-Time_Risk_Asse=
+ssment_Quality_Assurance_and_Decision_Intelligence_in_Financial_Systems/lin=
+ks/6aa213459d79f3260ef4acab/Blockchain-Enabled-Digital-Twin-and-AI-Framewor=
+k-for-Real-Time-Risk-Assessment-Quality-Assurance-and-Decision-Intelligence=
+-in-Financial-Systems.pdf&amp;hl=3Den&amp;sa=3DX&amp;d=3D166195248387681402=
+78&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-wXkivS-6KvrdCuxBjWMI=
+ST&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:AIVdB-=
+xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;pos=3D8&amp;folt=3Dcit&amp;fols=3D" =
+class=3D"gse_alrt_title" style=3D"font-size:17px;color:#1a0dab;line-height:=
+22px">Blockchain-Enabled Digital Twin and AI Framework for Real-Time Risk A=
+ssessment, Quality Assurance, and Decision Intelligence in Financial System=
+s</a></h3><div style=3D"color:#006621;line-height:18px">P Thomas, J Michael=
+, H Joy</div><div class=3D"gse_alrt_sni" style=3D"line-height:17px">The rap=
+id digitization of financial services has produced increasingly interconnec=
+ted <br>systems in which transactions, customer activities, regulatory proc=
+esses, <br>cybersecurity events, and operational decisions generate large v=
+olumes of data in <br>real time. Traditional financial riskmanagement appro=
+aches often depend on <br>historical reports, static rules, and fragmented =
+information systems, making it difficult <br>to identify emerging risks and=
+ respond rapidly to changing conditions. At the same=C2=A0=E2=80=A6</div><t=
+able cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"padding:8px =
+0"><tr><td style=3D"line-height:18px;font-size:15px;padding-right:8px;" val=
+ign=3D"top">=E2=80=A2</td><td style=3D"line-height:18px;font-size:15px;mso-=
+padding-alt:8px 0 4px 0;"><span style=3D"mso-text-raise:4px;">Cites: =E2=80=
+=AABitcoin: A Peer-to-Peer Electronic Cash System=E2=80=AC&nbsp;&nbsp;</spa=
+n><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;user=3Dc8DZm3=
+IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/citations%3Fview_op%3Dview_citation%26user=
+%3Dc8DZm3IAAAAJ%26citation_for_view%3Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" =
+style=3D"padding:8px 0;"><img height=3D"18" width=3D"21" alt=3D"Edit" style=
+=3D"vertical-align:top;" src=3D"https://scholar.google.com/intl/en/scholar/=
+images/1x/link-36.png"></a></td></tr></table><div style=3D"width:auto"><tab=
+le cellpadding=3D"0" cellspacing=3D"0" border=3D"0"><tbody><tr><td style=3D=
+"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://schola=
+r.google.com/citations?hl=3Den&amp;update_op=3Demail_library_add&amp;info=
+=3D9l-ObslppOYJ&amp;citsig=3DAOcXxEUAAAAAbIyrinw6bPPYgTW93-vMfQW6E1o&amp;ci=
+ted-by=3D" style=3D"text-decoration:none;display:inline-block;padding:4px 8=
+px 4px 0;mso-padding-alt:0;"><img alt=3D"Save" src=3D"https://scholar.googl=
+e.com/intl/en/scholar/images/1x/save-32.png" border=3D"0" height=3D"16" wid=
+th=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"padding-right:=
+4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/sc=
+holar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dtw&amp;url=3Dhttps://www.=
+researchgate.net/profile/Solomon-Oke-3/publication/414137269_Blockchain-Ena=
+bled_Digital_Twin_and_AI_Framework_for_Real-Time_Risk_Assessment_Quality_As=
+surance_and_Decision_Intelligence_in_Financial_Systems/links/6aa213459d79f3=
+260ef4acab/Blockchain-Enabled-Digital-Twin-and-AI-Framework-for-Real-Time-R=
+isk-Assessment-Quality-Assurance-and-Decision-Intelligence-in-Financial-Sys=
+tems.pdf&amp;rt=3DBlockchain-Enabled+Digital+Twin+and+AI+Framework+for+Real=
+-Time+Risk+Assessment,+Quality+Assurance,+and+Decision+Intelligence+in+Fina=
+ncial+Systems&amp;scisig=3DAIVdB-ySPYz6SwbqcTGPuP5hvKDR" style=3D"text-deco=
+ration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><img a=
+lt=3D"Twitter" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/=
+tw-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:=
+top"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"=
+><a href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dschol=
+aralrt&amp;ss=3Din&amp;url=3Dhttps://www.researchgate.net/profile/Solomon-O=
+ke-3/publication/414137269_Blockchain-Enabled_Digital_Twin_and_AI_Framework=
+_for_Real-Time_Risk_Assessment_Quality_Assurance_and_Decision_Intelligence_=
+in_Financial_Systems/links/6aa213459d79f3260ef4acab/Blockchain-Enabled-Digi=
+tal-Twin-and-AI-Framework-for-Real-Time-Risk-Assessment-Quality-Assurance-a=
+nd-Decision-Intelligence-in-Financial-Systems.pdf&amp;rt=3DBlockchain-Enabl=
+ed+Digital+Twin+and+AI+Framework+for+Real-Time+Risk+Assessment,+Quality+Ass=
+urance,+and+Decision+Intelligence+in+Financial+Systems&amp;scisig=3DAIVdB-y=
+SPYz6SwbqcTGPuP5hvKDR" style=3D"text-decoration:none;display:inline-block;p=
+adding:4px 8px;mso-padding-alt:0;"><img alt=3D"LinkedIn" src=3D"https://sch=
+olar.google.com/intl/en/scholar/images/1x/in-32.png" border=3D"0" height=3D=
+"16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"paddin=
+g-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.googl=
+e.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dfb&amp;url=3Dhttp=
+s://www.researchgate.net/profile/Solomon-Oke-3/publication/414137269_Blockc=
+hain-Enabled_Digital_Twin_and_AI_Framework_for_Real-Time_Risk_Assessment_Qu=
+ality_Assurance_and_Decision_Intelligence_in_Financial_Systems/links/6aa213=
+459d79f3260ef4acab/Blockchain-Enabled-Digital-Twin-and-AI-Framework-for-Rea=
+l-Time-Risk-Assessment-Quality-Assurance-and-Decision-Intelligence-in-Finan=
+cial-Systems.pdf&amp;rt=3DBlockchain-Enabled+Digital+Twin+and+AI+Framework+=
+for+Real-Time+Risk+Assessment,+Quality+Assurance,+and+Decision+Intelligence=
++in+Financial+Systems&amp;scisig=3DAIVdB-ySPYz6SwbqcTGPuP5hvKDR" style=3D"t=
+ext-decoration:none;display:inline-block;padding:4px 8px;mso-padding-alt:0;=
+"><img alt=3D"Facebook" src=3D"https://scholar.google.com/intl/en/scholar/i=
+mages/1x/fb-32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertic=
+al-align:top"></a></td></tr></tbody></table></div><br><h3 style=3D"font-wei=
+ght:normal;margin:0;font-size:17px;line-height:20px;"><span style=3D"font-s=
+ize:11px;font-weight:bold;color:#1a0dab;vertical-align:2px">[PDF]</span> <a=
+ href=3D"https://scholar.google.com/scholar_url?url=3Dhttps://www.researchg=
+ate.net/profile/Solomon-Oke-3/publication/414129895_A_Unified_AI_and_Digita=
+l_Twin_Framework_for_Business_Process_Optimization_Real-Time_Decision_Suppo=
+rt_and_Blockchain-Based_Risk_Management/links/6aa2119442018403bcef4a90/A-Un=
+ified-AI-and-Digital-Twin-Framework-for-Business-Process-Optimization-Real-=
+Time-Decision-Support-and-Blockchain-Based-Risk-Management.pdf&amp;hl=3Den&=
+amp;sa=3DX&amp;d=3D4945225516817234966&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp=
+;scisig=3DAIVdB-y3DvOWzsS7QQLTEQYUDSvB&amp;oi=3Dscholaralrt&amp;hist=3Dc8DZ=
+m3IAAAAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&amp;html=3D&amp;=
+pos=3D9&amp;folt=3Dcit&amp;fols=3D" class=3D"gse_alrt_title" style=3D"font-=
+size:17px;color:#1a0dab;line-height:22px">A Unified AI and Digital Twin Fra=
+mework for Business Process Optimization, Real-Time Decision Support, and B=
+lockchain-Based Risk Management</a></h3><div style=3D"color:#006621;line-he=
+ight:18px">P Thomas, J Michael, H Joy</div><div class=3D"gse_alrt_sni" styl=
+e=3D"line-height:17px">The increasing complexity of digital business operat=
+ions has created a need for <br>intelligent systems capable of integrating =
+business processes, operational data, <br>predictive analytics, risk assess=
+ment, and real-time decision-making. Conventional <br>business process mana=
+gement approaches frequently represent workflow logic and <br>decision logi=
+c separately, while financial institutions continue to face challenges <br>=
+involving transaction security, scalability, operational efficiency, and ra=
+pidly changing=C2=A0=E2=80=A6</div><table cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" style=3D"padding:8px 0"><tr><td style=3D"line-height:18px;f=
+ont-size:15px;padding-right:8px;" valign=3D"top">=E2=80=A2</td><td style=3D=
+"line-height:18px;font-size:15px;mso-padding-alt:8px 0 4px 0;"><span style=
+=3D"mso-text-raise:4px;">Cites: =E2=80=AABitcoin: A Peer-to-Peer Electronic=
+ Cash System=E2=80=AC&nbsp;&nbsp;</span><a href=3D"https://scholar.google.c=
+om/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ#d=3Dgs_md_cita-d&amp;u=3D/cita=
+tions%3Fview_op%3Dview_citation%26user%3Dc8DZm3IAAAAJ%26citation_for_view%3=
+Dc8DZm3IAAAAJ:aqlVkmm33-oC%26hl%3Den" style=3D"padding:8px 0;"><img height=
+=3D"18" width=3D"21" alt=3D"Edit" style=3D"vertical-align:top;" src=3D"http=
+s://scholar.google.com/intl/en/scholar/images/1x/link-36.png"></a></td></tr=
+></table><div style=3D"width:auto"><table cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0"><tbody><tr><td style=3D"padding-right:4px;mso-padding-alt:4=
+px 16px 0 0;"><a href=3D"https://scholar.google.com/citations?hl=3Den&amp;u=
+pdate_op=3Demail_library_add&amp;info=3DFrwWGGj4oEQJ&amp;citsig=3DAOcXxEUAA=
+AAAbIyrihDda-a2OHw4aIBrRTKAtSQ&amp;cited-by=3D" style=3D"text-decoration:no=
+ne;display:inline-block;padding:4px 8px 4px 0;mso-padding-alt:0;"><img alt=
+=3D"Save" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/save-=
+32.png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top=
+"></a></td><td style=3D"padding-right:4px;mso-padding-alt:4px 16px 0 0;"><a=
+ href=3D"https://scholar.google.com/scholar_share?hl=3Den&amp;oi=3Dscholara=
+lrt&amp;ss=3Dtw&amp;url=3Dhttps://www.researchgate.net/profile/Solomon-Oke-=
+3/publication/414129895_A_Unified_AI_and_Digital_Twin_Framework_for_Busines=
+s_Process_Optimization_Real-Time_Decision_Support_and_Blockchain-Based_Risk=
+_Management/links/6aa2119442018403bcef4a90/A-Unified-AI-and-Digital-Twin-Fr=
+amework-for-Business-Process-Optimization-Real-Time-Decision-Support-and-Bl=
+ockchain-Based-Risk-Management.pdf&amp;rt=3DA+Unified+AI+and+Digital+Twin+F=
+ramework+for+Business+Process+Optimization,+Real-Time+Decision+Support,+and=
++Blockchain-Based+Risk+Management&amp;scisig=3DAIVdB-yQV73VjQJa31JAdTDU6C3w=
+" style=3D"text-decoration:none;display:inline-block;padding:4px 8px;mso-pa=
+dding-alt:0;"><img alt=3D"Twitter" src=3D"https://scholar.google.com/intl/e=
+n/scholar/images/1x/tw-32.png" border=3D"0" height=3D"16" width=3D"16" styl=
+e=3D"vertical-align:top"></a></td><td style=3D"padding-right:4px;mso-paddin=
+g-alt:4px 16px 0 0;"><a href=3D"https://scholar.google.com/scholar_share?hl=
+=3Den&amp;oi=3Dscholaralrt&amp;ss=3Din&amp;url=3Dhttps://www.researchgate.n=
+et/profile/Solomon-Oke-3/publication/414129895_A_Unified_AI_and_Digital_Twi=
+n_Framework_for_Business_Process_Optimization_Real-Time_Decision_Support_an=
+d_Blockchain-Based_Risk_Management/links/6aa2119442018403bcef4a90/A-Unified=
+-AI-and-Digital-Twin-Framework-for-Business-Process-Optimization-Real-Time-=
+Decision-Support-and-Blockchain-Based-Risk-Management.pdf&amp;rt=3DA+Unifie=
+d+AI+and+Digital+Twin+Framework+for+Business+Process+Optimization,+Real-Tim=
+e+Decision+Support,+and+Blockchain-Based+Risk+Management&amp;scisig=3DAIVdB=
+-yQV73VjQJa31JAdTDU6C3w" style=3D"text-decoration:none;display:inline-block=
+;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"LinkedIn" src=3D"https://s=
+cholar.google.com/intl/en/scholar/images/1x/in-32.png" border=3D"0" height=
+=3D"16" width=3D"16" style=3D"vertical-align:top"></a></td><td style=3D"pad=
+ding-right:4px;mso-padding-alt:4px 16px 0 0;"><a href=3D"https://scholar.go=
+ogle.com/scholar_share?hl=3Den&amp;oi=3Dscholaralrt&amp;ss=3Dfb&amp;url=3Dh=
+ttps://www.researchgate.net/profile/Solomon-Oke-3/publication/414129895_A_U=
+nified_AI_and_Digital_Twin_Framework_for_Business_Process_Optimization_Real=
+-Time_Decision_Support_and_Blockchain-Based_Risk_Management/links/6aa211944=
+2018403bcef4a90/A-Unified-AI-and-Digital-Twin-Framework-for-Business-Proces=
+s-Optimization-Real-Time-Decision-Support-and-Blockchain-Based-Risk-Managem=
+ent.pdf&amp;rt=3DA+Unified+AI+and+Digital+Twin+Framework+for+Business+Proce=
+ss+Optimization,+Real-Time+Decision+Support,+and+Blockchain-Based+Risk+Mana=
+gement&amp;scisig=3DAIVdB-yQV73VjQJa31JAdTDU6C3w" style=3D"text-decoration:=
+none;display:inline-block;padding:4px 8px;mso-padding-alt:0;"><img alt=3D"F=
+acebook" src=3D"https://scholar.google.com/intl/en/scholar/images/1x/fb-32.=
+png" border=3D"0" height=3D"16" width=3D"16" style=3D"vertical-align:top"><=
+/a></td></tr></tbody></table></div><br><div style=3D"line-height:16px;mso-l=
+ine-height-rule:exactly;border-top:1px solid #bdbdbd">&nbsp;</div><p style=
+=3D"margin:8px 0 16px 0;color:#666">This message was sent by Google Scholar=
+ because you're following new citations to <a href=3D"https://scholar.googl=
+e.com/citations?hl=3Den&amp;user=3Dc8DZm3IAAAAJ" style=3D"color:#1a0dab;">y=
+our profile</a>.<img src=3D"https://scholar.google.com/scholar_url?url=3Dht=
+tps://scholar.google.com/scholar/images/cleardot.gif&amp;hl=3Den&amp;sa=3DX=
+&amp;ei=3DCniraqvwIpu36rQP-e-6uAo&amp;scisig=3DAIVdB-xTaMqcEQp-DzHTu2F-kGnC=
+&amp;hist=3Dc8DZm3IAAAAJ:10739191307457540164:AIVdB-xSLxUH3aag97Gy1fKcN1c_&=
+amp;html=3D&amp;folt=3Dcit&amp;fols=3D&amp;lrrs=3D0,1,2,3,4,5,6,7,8,9" heig=
+ht=3D1 width=3D1 alt=3D""></p><div style=3D"margin-bottom:8px;"><div><!--[i=
+f gte mso 9]><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><t=
+d style=3D"mso-line-height-rule:exactly;line-height:27px;border-top:1px sol=
+id #fff;border-bottom:1px solid #fff;mso-text-raise:-1px;"><![endif]--><a h=
+ref=3D"https://scholar.google.com/scholar_alerts?view_op=3Dlist_alerts&amp;=
+email_for_op=3Dnakamoto.satoshi.b%40gmail.com&amp;alert_id=3DRDD4b5hFCZUJ&a=
+mp;hl=3Den" style=3D"display:inline-block;text-decoration:none;font-family:=
+arial,sans-serif;font-size:13px;font-size:11px;text-transform:uppercase;fon=
+t-size:13px;line-height:21px;padding:3px 0;color:#1a0dab;border-top:1px sol=
+id transparent;border-bottom:1px solid transparent;border-radius:3px;mso-pa=
+dding-alt:0;mso-border-alt:none;"><span style=3D"mso-text-raise:5px">List a=
+lerts</span></a><!--[if gte mso 9]></td></tr></table><![endif]--></div><div=
+><!--[if gte mso 9]><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+><tr><td style=3D"mso-line-height-rule:exactly;line-height:27px;border-top:=
+1px solid #fff;border-bottom:1px solid #fff;mso-text-raise:-1px;"><![endif]=
+--><a href=3D"https://scholar.google.com/scholar_alerts?view_op=3Dcancel_al=
+ert_options&amp;email_for_op=3Dnakamoto.satoshi.b%40gmail.com&amp;alert_id=
+=3DRDD4b5hFCZUJ&amp;hl=3Den&amp;citsig=3DAOcXxEUAAAAAar3tCv9-gmP8l-BviGydTu=
+P6_mI" style=3D"display:inline-block;text-decoration:none;font-family:arial=
+,sans-serif;font-size:13px;font-size:11px;text-transform:uppercase;font-siz=
+e:13px;line-height:21px;padding:3px 0;color:#1a0dab;border-top:1px solid tr=
+ansparent;border-bottom:1px solid transparent;border-radius:3px;mso-padding=
+-alt:0;mso-border-alt:none;"><span style=3D"mso-text-raise:5px">Cancel aler=
+t</span></a><!--[if gte mso 9]></td></tr></table><![endif]--></div></div></=
+div><!--[if gte mso 9]></td></tr></table><![endif]--></body></html>
